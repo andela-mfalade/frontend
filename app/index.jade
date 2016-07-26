@@ -1,0 +1,22 @@
+doctype html
+html(lang="en" ng-app="Exponea")
+  head
+    base(href="/")
+    title Exponea
+    link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic" type="text/css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css")
+    
+    link(rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet" type="text/css" href="/css/main.css")
+    
+    //- Scripts
+    script(src="/lib/jquery/dist/jquery.min.js")
+    script(src="/lib/angular/angular.min.js")
+    script(src="/lib/angular-ui-router/release/angular-ui-router.min.js")
+    script(src="/lib/bootstrap/dist/js/bootstrap.min.js")
+    
+    script(src="/js/index.js")
+    
+  body
+    div(ng-include="'/views/home.html'")
+  

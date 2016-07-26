@@ -1,26 +1,29 @@
 (function() {
   'use strict';
 
-  var gulp = require('gulp'),
-  path = require('path'),
-  jade = require('gulp-jade'),
-  sass = require('gulp-sass'),
-  browserSync = require('browser-sync').create();
+  var gulp = require('gulp');
+  var path = require('path');
+  var jade = require('gulp-jade');
+  var sass = require('gulp-sass');
+  var concat = require('gulp-concat');
+  var browserSync = require('browser-sync').create();
 
-  var sources = {
+  var source = {
     sass: './app/styles/**/*.sass',
-    jade: './app/**/*.jade'
+    jade: './app/**/**/*.jade',
+    scripts: './app/**/**/*.js'
   };
 
   var derived = {
     html: './public',
-    css: './public/styles/'
+    css: './public/css/',
+    scripts: './public/js'
   };
 
 
   gulp.task('jade', function () {
     var locals = {};
-    gulp.src(sources.jade)
+    gulp.src(source.jade)
     .pipe(jade({locals: locals}))
     .pipe(gulp.dest(derived.html))
     .pipe(browserSync.stream());
@@ -28,21 +31,30 @@
 
 
   gulp.task('sass', function () {
-    return gulp.src(sources.sass)
+    return gulp.src(source.sass)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(derived.css))
     .pipe(browserSync.stream());
   });
 
 
-  gulp.task('serve', ['sass', 'jade'], function() {
+  gulp.task('scripts', function () {
+    gulp.src(source.scripts)
+      .pipe(concat('index.js'))
+      .pipe(gulp.dest(derived.scripts));
+  });
+
+
+  gulp.task('serve', ['sass', 'jade', 'scripts'], function() {
 
     browserSync.init({
       server: "./public"
     });
 
-    gulp.watch(sources.jade, ['jade']);
-    gulp.watch(sources.sass, ['sass']);
+    gulp.watch(source.jade, ['jade']);
+    gulp.watch(source.sass, ['sass']);
+    gulp.watch(source.scripts, ['scripts']);
+    gulp.watch('./app/**/**/*.js').on('change', browserSync.reload);
     gulp.watch('./public/**/*.html').on('change', browserSync.reload);
   });
 
