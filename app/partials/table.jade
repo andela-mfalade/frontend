@@ -1,0 +1,13 @@
+.table
+  h5 CREATED FEATURES
+  table.table-striped.margin-top
+    thead
+      tr
+        th Type
+        th 1 App Visit
+        th 2 App Visit
+    tbody
+      tr(ng-repeat="row in rows")
+        td {{ row.type }}
+        td {{ row.firstCol }}
+        td {{ row.secondCol }}

@@ -1,0 +1,17 @@
+.row
+  .container
+    .bar-chart
+      .row.subtle-padding
+        .col-md-4
+          h5 CUSTOMER JOURNEY
+        .col-md-4.text-center
+          h5 CONVERSION
+            span.purple : 5.45% &nbsp;
+              span.caret
+        .col-md-2.col-md-offset-2.text-right
+          .input-group
+            span.input-group-addon#basic-addon1
+              span.glyphicon.glyphicon-calendar
+            input.form-control(type="text" placeholder="last 7 days" aria-describedby="basic-addon1")
+      br
+      nvd3.margin-top(options="options" data="data") 

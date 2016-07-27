@@ -2,12 +2,11 @@
   'use strict';
 
   angular.module('exponea.controllers', []);
-  angular.module('exponea.directives', []);
 
   var appDependencies = [
+    'nvd3',
     'ui.router',
-    'exponea.controllers',
-    'exponea.directives'
+    'exponea.controllers'
   ];
 
   angular
@@ -18,16 +17,19 @@
     $locationProvider.html5Mode(true);
 
     var templates = {
-      home: 'views/home.html',
-      footer: 'partials/footer.html',
-      header: 'partials/header.html',
+      charts: 'partials/charts.html',
+      cards: 'partials/cards.html',
+      pie: 'partials/pie.html',
+      table: 'partials/table.html',
     }
 
     var homeConfig = {
       url: '/',
       views: {
-        'header': {templateUrl: templates.header, controller: 'homeCtrl'},
-        'footer': {templateUrl: templates.gooter},
+        'charts': {templateUrl: templates.charts, controller: 'chartsCtrl as vm'},
+        'cards': {templateUrl: templates.cards, controller: 'cardsCtrl'},
+        'pie': {templateUrl: templates.pie, controller: 'pieCtrl'},
+        'table': {templateUrl: templates.table, controller: 'tableCtrl'},
       }
     };
 

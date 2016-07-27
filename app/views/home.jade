@@ -1,1 +1,10 @@
-div(ui-view="header")
+div(ng-include="'partials/header.html'")
+
+.container-fluid
+  #chartArea
+    div(ui-view="charts")
+    div(ui-view="cards")
+    .container
+      .row
+        .col-lg-6(ui-view="pie")
+        .col-lg-6(ui-view="table")
