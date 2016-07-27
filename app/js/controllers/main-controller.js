@@ -39,7 +39,7 @@
     };
 
     $scope.data = [{
-      key: "Cumulative Return",
+      key: "Data",
       values: [
           { "label" : "registration" , "value" : 55 },
           { "label" : "create_project" , "value" : 35 },
