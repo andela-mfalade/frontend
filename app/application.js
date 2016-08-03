@@ -1,12 +1,12 @@
 (function() {
   'use strict';
 
-  angular.module('exponea.controllers', []);
+  angular.module('Exponea.controllers', []);
 
   var appDependencies = [
     'nvd3',
     'ui.router',
-    'exponea.controllers'
+    'Exponea.controllers'
   ];
 
   angular
@@ -26,10 +26,25 @@
     var homeConfig = {
       url: '/',
       views: {
-        'charts': {templateUrl: templates.charts, controller: 'chartsCtrl as vm'},
-        'cards': {templateUrl: templates.cards, controller: 'cardsCtrl'},
-        'pie': {templateUrl: templates.pie, controller: 'pieCtrl'},
-        'table': {templateUrl: templates.table, controller: 'tableCtrl'},
+        'charts': {
+          templateUrl: templates.charts,
+          controller: 'chartsCtrl',
+          controllerAs: 'chart'
+        },
+        'cards': {
+          templateUrl: templates.cards,
+          controller: 'cardsCtrl'
+        },
+        'pie': {
+          templateUrl: templates.pie,
+          controller: 'pieCtrl',
+          controllerAs: 'pieChart'
+        },
+        'table': {
+          templateUrl: templates.table,
+          controller: 'tableCtrl',
+          controllerAs: 'table'
+        },
       }
     };
 
